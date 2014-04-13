@@ -1,6 +1,6 @@
 {BufferedProcess} = require "atom"
 util = require "util"
-temp = require "temp"
+temp = require("temp").track()
 extend = require "node.extend"
 
 module.exports =
@@ -59,3 +59,4 @@ module.exports =
   showResult: (output) ->
     buffer = @editor.getBuffer()
     buffer.setText(output)
+    buffer.save()
