@@ -1,6 +1,7 @@
 {BufferedProcess} = require "atom"
 util = require "util"
 temp = require "temp"
+extend = require "node.extend"
 
 module.exports =
   specs:
@@ -18,6 +19,7 @@ module.exports =
 
   activate: (state) ->
     atom.workspaceView.command "quickrun:execute", => @execute()
+    extend @specs, (atom.config.get("quickrun.specs") or {})
 
   execute: ->
     editor = atom.workspace.getActiveEditor()
@@ -26,13 +28,15 @@ module.exports =
     return unless spec?
     command = spec.cmd
     args = spec.args
+    options = spec.options
     code = editor.getBuffer().getText()
     args = (util.format arg, code for arg in args)
-    @executeCore command, args
+    @executeCore command, args, options
 
-  executeCore: (command, args) ->
-    options =
+  executeCore: (command, args, options = {}) ->
+    options = extend
       env: process.env
+      , options
     stdout = (output) =>
       @handleOutput(output)
     stderr = (output) =>
