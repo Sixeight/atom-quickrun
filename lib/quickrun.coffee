@@ -14,6 +14,8 @@ module.exports =
       cmd: "python"
       args: ["-c", "%s"]
 
+  editor: null
+
   activate: (state) ->
     atom.workspaceView.command "quickrun:execute", => @execute()
 
@@ -31,14 +33,25 @@ module.exports =
   executeCore: (command, args) ->
     options =
       env: process.env
-    stdout = @handleOutput
-    stderr = @hundleOutput
+    stdout = (output) =>
+      @handleOutput(output)
+    stderr = (output) =>
+      @hundleOutput(output)
     new BufferedProcess({command, args, options, stdout, stderr})
 
   handleOutput: (output) ->
-    temp.open "quickrun", (_, info) =>
-      atom.workspace
-        .open(info.path, split: 'right', activatePane: true)
-        .done (editor) =>
-          buffer = editor.getBuffer()
-          buffer.append output
+    if @editor?
+      @showResult(output)
+    else
+      temp.open "quickrun", (_, info) =>
+        atom.workspace
+          .open(info.path, split: 'right', activatePane: true)
+          .done (editor) =>
+            @editor = editor
+            atom.subscribe @editor.getBuffer(), "destroyed", =>
+              @editor = null
+            @showResult(output)
+
+  showResult: (output) ->
+    buffer = @editor.getBuffer()
+    buffer.setText(output)
