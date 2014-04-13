@@ -1,0 +1,15 @@
+{
+  "name": "quickrun",
+  "main": "./lib/quickrun",
+  "version": "0.1.0",
+  "description": "Execute code on current buffer.",
+  "activationEvents": ["quickrun:execute"],
+  "repository": "https://github.com/Sixeight/atom-quickrun",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "temp": "~0.7.0"
+  }
+}
