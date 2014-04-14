@@ -1,6 +1,6 @@
 # Quickrun package
 
-Execute execute whole/part of editing file.
+Execute whole/part of editing file.
 Inspired by [vim-quickrun](https://github.com/thinca/vim-quickrun).
 
 ## Installation
