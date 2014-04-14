@@ -55,6 +55,7 @@ module.exports =
         atom.workspace
           .open(info.path, split: 'right', activatePane: true)
           .done (editor) =>
+            atom.workspace.activatePreviousPane()
             @editor = editor
             atom.subscribe @editor.getBuffer(), "destroyed", =>
               @editor = null
