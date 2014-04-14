@@ -28,8 +28,9 @@ Write code and `Ctrl-Cmd-r` then show result on another pane.
 
 ## TODO
 
-* Configuration, especially custom specs
-* More flexible spec format. (file name, and so on)
+* Configuration, especially custom Languages.
+* More flexible Language spec format. (file name, and so on).
+* Test, test, test!
 
 ## Contributing
 1. Fork it ( http://github.com/Sixeight/atom-quickrun/fork )
