@@ -18,10 +18,11 @@ module.exports =
   editor: null
 
   activate: (state) ->
-    atom.workspaceView.command "quickrun:execute", => @execute()
+    atom.workspaceView.command "quickrun:execute", => @execute("all")
+    atom.workspaceView.command "quickrun:select", => @execute("select")
     extend @specs, (atom.config.get("quickrun.specs") or {})
 
-  execute: ->
+  execute: (type) ->
     editor = atom.workspace.getActiveEditor()
     grammar = editor.getGrammar()
     spec = @specs[grammar.name]
@@ -29,7 +30,10 @@ module.exports =
     command = spec.cmd
     args = spec.args
     options = spec.options
-    code = editor.getBuffer().getText()
+    if type is "select"
+      code = editor.getSelectedText()
+    else
+      code = editor.getBuffer().getText()
     args = (util.format arg, code for arg in args)
     @executeCore command, args, options
 

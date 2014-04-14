@@ -5,7 +5,8 @@
     'submenu': [
       'label': 'Quickrun'
       'submenu': [
-        { 'label': 'Execute', 'command': 'quickrun:execute' }
+        { 'label': 'Execute', 'command': 'quickrun:execute' },
+        { 'label': 'Execute Select', 'command': 'quickrun:select' }
       ]
     ]
   }
