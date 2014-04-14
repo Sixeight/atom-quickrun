@@ -33,7 +33,7 @@ module.exports =
     if type is "select"
       code = editor.getSelectedText()
     else
-      code = editor.getBuffer().getText()
+      code = editor.getText()
     args = (util.format arg, code for arg in args)
     @executeCore command, args, options
 
@@ -62,6 +62,5 @@ module.exports =
             @showResult(output)
 
   showResult: (output) ->
-    buffer = @editor.getBuffer()
-    buffer.setText(output)
-    buffer.save()
+    @editor.setText(output)
+    @editor.save()
