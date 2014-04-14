@@ -1,5 +1,39 @@
-# quickrun package
+# Quickrun package
 
-A short description of your package.
+Execute execute whole/part of editing file.
+Inspired by [vim-quickrun](https://github.com/thinca/vim-quickrun).
 
-![A screenshot of your spankin' package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+## Installation
+
+Find from Settings pane or run `apm install quickrun`.
+
+## Usage
+
+Write code and `Ctrl-Cmd-r` then show result on another pane.
+
+![usage](http://s1.directupload.net/images/140414/iavncl4p.gif)
+
+## Commands
+
+| name | description | key binding | selector |
+|:----:|:-----------:|:-----------:|:--------:|
+| quickrun:execute | execute whole of editing file | ctrl-cmd-r |.editor:not(.mini)|
+| quickrun:select | execute selected text | -|-|
+
+## Supported Languages
+
+* Ruby
+* Perl
+* Python
+
+## TODO
+
+* Configuration, especially custom specs
+* More flexible spec format. (file name, and so on)
+
+## Contributing
+1. Fork it ( http://github.com/Sixeight/atom-quickrun/fork )
+2. Create your feature branch (git checkout -b my-new-feature)
+3. Commit your changes (git commit -am 'Add some feature')
+4. nPush to the branch (git push origin my-new-feature)
+5. Create new Pull Request
