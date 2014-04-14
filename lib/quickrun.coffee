@@ -45,6 +45,7 @@ module.exports =
       @handleOutput(output)
     stderr = (output) =>
       @handleOutput(output)
+    @editor.setText("") if @editor?
     new BufferedProcess({command, args, options, stdout, stderr})
 
   handleOutput: (output) ->
@@ -62,5 +63,6 @@ module.exports =
             @showResult(output)
 
   showResult: (output) ->
-    @editor.setText(output)
-    @editor.save()
+    buffer = @editor.getBuffer()
+    buffer.append(output)
+    buffer.save()
