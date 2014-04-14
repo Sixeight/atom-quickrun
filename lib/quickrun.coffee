@@ -44,7 +44,7 @@ module.exports =
     stdout = (output) =>
       @handleOutput(output)
     stderr = (output) =>
-      @hundleOutput(output)
+      @handleOutput(output)
     new BufferedProcess({command, args, options, stdout, stderr})
 
   handleOutput: (output) ->
