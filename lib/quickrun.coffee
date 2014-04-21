@@ -52,7 +52,7 @@ module.exports =
     if @editor?
       @showResult(output)
     else
-      temp.open "quickrun", (_, info) =>
+      temp.open "quickrun-", (_, info) =>
         atom.workspace
           .open(info.path, split: 'right', activatePane: true)
           .done (editor) =>
