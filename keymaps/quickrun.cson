@@ -7,5 +7,5 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'.editor:not(.mini)':
+'atom-text-editor:not(.mini)':
   'ctrl-cmd-r': 'quickrun:execute'
