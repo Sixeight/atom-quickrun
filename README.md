@@ -1,3 +1,7 @@
+# THIS PACKAGE is NOT MATCH MAINTENANCE
+
+Strongly recommended to use `script`: https://atom.io/packages/script
+
 # Quickrun package
 
 Execute whole/part of editing file.
