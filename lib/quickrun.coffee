@@ -18,12 +18,12 @@ module.exports =
   editor: null
 
   activate: (state) ->
-    atom.workspaceView.command "quickrun:execute", => @execute("all")
-    atom.workspaceView.command "quickrun:select", => @execute("select")
+    atom.commands.add "atom-workspace", "quickrun:execute": => @execute("all")
+    atom.commands.add "atom-workspace", "quickrun:select": => @execute("select")
     extend @specs, (atom.config.get("quickrun.specs") or {})
 
   execute: (type) ->
-    editor = atom.workspace.getActiveEditor()
+    editor = atom.workspace.getActiveTextEditor()
     grammar = editor.getGrammar()
     spec = @specs[grammar.name]
     return unless spec?
