@@ -54,12 +54,10 @@ module.exports =
     else
       temp.open "quickrun-", (_, info) =>
         atom.workspace
-          .open(info.path, split: 'right', activatePane: true)
+          .open(info.path, split: 'right', activatePane: false)
           .done (editor) =>
-            atom.workspace.activatePreviousPane()
             @editor = editor
-            atom.subscribe @editor.getBuffer(), "destroyed", =>
-              @editor = null
+            @editor.getBuffer().onDidDestroy => @editor = null
             @showResult(output)
 
   showResult: (output) ->
