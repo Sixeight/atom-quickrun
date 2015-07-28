@@ -36,5 +36,5 @@ Write code and `Ctrl-Cmd-r` then show result on another pane.
 1. Fork it ( http://github.com/Sixeight/atom-quickrun/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
-4. nPush to the branch (git push origin my-new-feature)
+4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
